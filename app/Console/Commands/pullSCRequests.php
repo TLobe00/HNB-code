@@ -156,16 +156,22 @@ class pullSCRequests extends Command
                     //print_r($ticketchk);
 
                     $updflag = NULL;
-                    if ($ticketchk == NULL) {
-                        $screquest = new screquest;
-                        $updflag = 1;
-                    } else {
-                        $screquest = $ticketchk;
-                    }
 
                     $ticketdateformat = date("Y-m-d H:i:s", strtotime($ticket['createdTime']));
                     $ticketdateformat2 = date("Y-m-d H:i:s", strtotime($ticket['updatedTime']));
 
+                    $launchdate = date("Y-m-d H:i:s", strtotime('2021-10-16'));
+
+
+                    if ($ticketchk == NULL) {
+                        $screquest = new screquest;
+
+                        if ($ticketdateformat >= $launchdate) {
+                            $updflag = 1;
+                        }
+                    } else {
+                        $screquest = $ticketchk;
+                    }
 
 //                $screquest = new screquest;
                     if ($ticketchk) {
@@ -178,7 +184,7 @@ class pullSCRequests extends Command
                         }
                     }
 
-
+/*
                     if ($updflag == 1) {
                         $screquest->status = $ticket['status'];
                         $screquest->subject = $ticket['subject'];
@@ -210,6 +216,7 @@ class pullSCRequests extends Command
                     if ($savenotes == 1) {
                         $this->saveTicketNotes($insertid, $ticket['requestID'], $ticketnotes);
                     }
+*/
 
 //                print $ticket['contact'] . "\n";
                 }
