@@ -37,7 +37,7 @@ class pushSCRequests extends Command
     {
         parent::__construct();
 
-        $this->hnb_url = env('HNB_DOMAIN_TEST');
+        $this->hnb_url = env('HNB_DOMAIN');
         $this->hnb_api = env('HNB_API_ID');
         $this->hnb_user = env('HNB_USER');
         $this->hnb_pw = env('HNB_PASS');
