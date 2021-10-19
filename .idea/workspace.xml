@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f98a971-6ea7-4620-bed0-90d4851b2230" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Console/Commands/pullSCRequests.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/pullSCRequests.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -202,7 +201,7 @@
       <workItem from="1631471157447" duration="478000" />
       <workItem from="1631625139997" duration="11229000" />
       <workItem from="1632324944328" duration="3641000" />
-      <workItem from="1632421616743" duration="23641000" />
+      <workItem from="1632421616743" duration="23845000" />
     </task>
     <servers />
   </component>
