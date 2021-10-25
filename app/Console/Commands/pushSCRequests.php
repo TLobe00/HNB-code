@@ -88,8 +88,14 @@ class pushSCRequests extends Command
 
                 if ($ticket->servicenowID == NULL) {
                     $ticket->servicenowID = $testdataoutput->result->number;
+                    if ($ticket->status == 'Closed') {
+                        $ticket->push_to_servicenow = 1;
+                    } else {
+                        $ticket->push_to_servicenow = NULL;
+                    }
+                } else {
+                    $ticket->push_to_servicenow = NULL;
                 }
-                $ticket->push_to_servicenow = NULL;
                 $ticket->save();
 
                 //print_r($testdataoutput);
