@@ -122,7 +122,6 @@ class pullSCRequests extends Command
 
             //$data = json_decode($data, true);
             foreach ($content['response']['result']['requests']['request'] as $ticket) {
-                //print_r($ticket);
                 //print "\n\n";
                 $savenotes = 0;
                 $saveinfo = 0;
@@ -147,6 +146,18 @@ class pullSCRequests extends Command
                         $ticketnotes = $content3['response']['result']['requests']['request'];
                         $savenotes = 1;
                     }
+
+                    preg_match('/(INC)[0-9]+/', $ticketinfo[0]['description'], $matches, PREG_UNMATCHED_AS_NULL);
+                    //preg_match('/(CameronTech)+/', $ticketinfo[0]['description'], $matches, PREG_UNMATCHED_AS_NULL);
+                    $noDuplicateFlag = NULL;
+                    if ( !empty($matches) ) {
+                        //var_dump($matches);
+                        $noDuplicateFlag = 1;
+                    } else {
+                        //print 'Nope';
+                        $noDuplicateFlag = NULL;
+                    }
+                    //print_r($ticketinfo);
 
 
                     print "Ticket - " . $ticket['requestID'] . "\n";
@@ -194,7 +205,16 @@ class pullSCRequests extends Command
                         $screquest->requestID = $ticket['requestID'];
                         $screquest->created_in_system = $ticketdateformat;
                         $screquest->updated_in_system = $ticketdateformat2;
-                        $screquest->push_to_servicenow = 1;
+
+                        if ( $noDuplicateFlag == 1 ) {
+                            $screquest->servicenowID = $matches[0];
+                            $screquest->push_to_servicenow = NULL;
+                        } else {
+                            $screquest->push_to_servicenow = 1;
+                        }
+
+                        //var_dump($screquest);
+                        //exit();
 
                         $screquest->save();
 
