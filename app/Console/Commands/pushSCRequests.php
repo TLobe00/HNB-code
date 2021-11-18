@@ -113,6 +113,7 @@ class pushSCRequests extends Command
 
     private function postInsert($ticket) {
         $response = Http::withBasicAuth($this->hnb_user, $this->hnb_pw)->withHeaders(['Accept' => 'application/json'])->post($this->hnb_url.'api/thhnb/genericscriptedapi/genericpost?api_id='.$this->hnb_api, [
+            'Opened for' => 'srvsnowStrataPD',
             'Category' => 'Application Services',
             'Subcategory' => 'E-Merchandising - Production',
             'Issue' => 'Functionality',
@@ -141,6 +142,7 @@ class pushSCRequests extends Command
         }
 
         $response = Http::withBasicAuth($this->hnb_user, $this->hnb_pw)->withHeaders(['Accept' => 'application/json'])->put($this->hnb_url.'api/thhnb/genericscriptedapi/genericput?api_id='.$this->hnb_api.'&table_record='.$ticket->servicenowID, [
+            'Opened for' => 'srvsnowStrataPD',
             'Category' => 'Application Services',
             'Subcategory' => 'E-Merchandising - Production',
             'Issue' => 'Functionality',
