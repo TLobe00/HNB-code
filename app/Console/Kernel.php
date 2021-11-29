@@ -30,7 +30,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         //$schedule->command('orders:update-fulfillments')->hourly();
-        $schedule->command('stratacache:pullSCRequests')->hourly()->then(function() {
+        $schedule->command('stratacache:pullSCRequests')->everyMinute()->then(function() {
             $this->call('stratacache:pushSCRequests');
         });
     }
